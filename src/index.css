@@ -1,8 +1,15 @@
+:root {
+  --gray-color: #6A7988;
+  --font-normal: 400;
+  --font-semibold: 600;
+  --font-bold: 700;
+  --font-size: 16px; /* Kích thước chữ */
+  --font-family: 'Open Sans', sans-serif; /* Font chữ */
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Open Sans', sans-serif; /* Áp dụng font cho body */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -11,3 +18,119 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.container {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+.container-column {
+  flex: 1 0 14.2857%;
+  box-sizing: border-box;
+  padding: 10px;
+}
+.column {
+  background: #F3F5F8;
+  border-radius: 6px;
+  opacity: 0.8017;
+  height: 100vh;
+}
+
+.column-title {
+  display: flex;
+  padding: 10px;
+}
+
+.add-wks {
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.day-name {
+  font-weight: var(--font-semibold);
+  font-size: 10px;
+  color: var(--gray-color);
+}
+.day-number {
+  font-weight: var(--font-semibold);
+  font-size: 11px;
+  color: #728096;
+}
+.day-active {
+  font-weight: var(--font-bold);
+  font-size: 11px;
+  color: #5A57CB;
+}
+.container-workout {
+  padding: 5px 10px;
+}
+.workount {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(34, 36, 38, 0.15);
+  border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+.work-name {
+  font-weight: var(--font-bold);
+  font-size: 11px;
+  color: #5A57CB;
+  text-transform: uppercase;
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.work-name span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: calc(100% - 20px);
+  font-weight: var(--font-bold);
+  font-size: 11px;
+  color: #5A57CB;
+  text-transform: uppercase;
+}
+
+.work-name img {
+  margin-left: auto;
+}
+
+.exercise {
+  border: 1px solid #DFDFDF;
+  border-radius: 3px;
+  margin-bottom: 5px;
+}
+
+.exercise {
+  padding: 5px;
+}
+.exercise-name {
+  font-weight: var(--font-semibold);
+  font-size: 13px;
+  color: #000;
+  text-align: right;
+  margin-bottom: 5px;
+}
+
+.exercise-info {
+  align-items: center;
+  display: flex
+}
+
+.exercise-number-of-set {
+  font-weight: var(--font-bold);
+  color: #919CAD;
+  font-size: 10px;
+}
+.exercise-detail {
+  font-weight: var(--font-normal);
+  font-size: 10px;
+  color: #95A6B7;
+  margin-left: auto;
+}
+.add-exercise {
+  margin-left: auto;
+  display: flex;
+  cursor: pointer;
+}
+
