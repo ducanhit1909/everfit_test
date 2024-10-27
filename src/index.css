@@ -24,11 +24,13 @@ code {
   overflow-x: auto;
   white-space: nowrap;
 }
+
 .container-column {
   flex: 1 0 14.2857%;
   box-sizing: border-box;
   padding: 10px;
 }
+
 .column {
   background: #F3F5F8;
   border-radius: 6px;
@@ -110,6 +112,9 @@ code {
   color: #000;
   text-align: right;
   margin-bottom: 5px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .exercise-info {

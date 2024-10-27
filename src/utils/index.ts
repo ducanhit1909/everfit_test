@@ -77,6 +77,18 @@ export const mockups: Data[] = [
           },
         ],
       },
+      {
+        id: generateUniId(),
+        name: "Arm Day",
+        exercises: [
+          {
+            id: generateUniId(),
+            name: "Exercise F",
+            numberOfSet: "1x",
+            detail: "60 lb x 6",
+          },
+        ],
+      },
     ],
     dayNumber: getThisWeekDates()[2],
   },
