@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./App.css";
 import { Container, Draggable, DropResult } from "react-smooth-dnd";
-import { generateUniId, getDayInWeek, mockups } from "./utils";
+import { generateUniId, mockups } from "./utils";
 import { Data, Exercise, Workout } from "./types";
 import IconPlus from "./assets/icons/plus.svg";
 import IconDot from "./assets/icons/dot.svg";
