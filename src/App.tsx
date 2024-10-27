@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./App.css";
 import { Container, Draggable, DropResult } from "react-smooth-dnd";
 import { generateUniId, mockups } from "./utils";
@@ -27,10 +27,10 @@ function App() {
     setData(newData);
   };
 
-  const applyDrag = (arr: any[], dragResult: DropResult) => {
-    const { removedIndex, addedIndex, payload } = dragResult;
+  const applyDrag = (arr: any[], dropResult: DropResult) => {
+    const { removedIndex, addedIndex, payload } = dropResult;
     if (removedIndex === null && addedIndex === null) return arr;
-    const result: any[] = [...arr];
+    const result = [...arr];
     let itemToAdd = payload;
     if (removedIndex !== null) {
       itemToAdd = result.splice(removedIndex, 1)[0];
@@ -85,6 +85,17 @@ function App() {
     setData(newData);
   };
 
+  const onDropWorkout = (idxData: number, e: DropResult) => {
+    const newItems = [...data];
+    newItems[idxData].workouts = applyDrag(newItems[idxData].workouts, e);
+    setData(newItems);
+  };
+
+  const getChildPayloadWorkout = (idxData: number, idxWk: number) => {
+    const item = data?.filter((_, i) => i === idxData)[0]?.workouts[idxWk];
+    return item;
+  };
+
   return (
     <Container>
       <div className="container">
@@ -101,8 +112,7 @@ function App() {
                   <div className="column-title">
                     <span
                       className={`day-number ${
-                        new Date().getDate() === item.dayNumber &&
-                        "day-active"
+                        new Date().getDate() === item.dayNumber && "day-active"
                       }`}
                     >
                       {item.dayNumber}
@@ -115,7 +125,12 @@ function App() {
                     />
                   </div>
                   <div className="container-workout">
-                  <Container groupName="workout" {...({} as any)}>
+                    <Container
+                      groupName="workout"
+                      onDrop={(e) => onDropWorkout(idx, e)}
+                      getChildPayload={(e) => getChildPayloadWorkout(idx, e)}
+                      {...({} as any)}
+                    >
                       {item.workouts.map((wks, idxWk) => {
                         return (
                           <Draggable key={wks.id} {...({} as any)}>
