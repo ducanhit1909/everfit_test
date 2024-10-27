@@ -101,11 +101,11 @@ function App() {
                   <div className="column-title">
                     <span
                       className={`day-number ${
-                        new Date().getDate() === getDayInWeek(item.id) &&
+                        new Date().getDate() === item.dayNumber &&
                         "day-active"
                       }`}
                     >
-                      {getDayInWeek(item.id)}
+                      {item.dayNumber}
                     </span>
                     <img
                       src={IconPlus}
@@ -115,7 +115,7 @@ function App() {
                     />
                   </div>
                   <div className="container-workout">
-                    <Container groupName="workout" {...({} as any)}>
+                  <Container groupName="workout" {...({} as any)}>
                       {item.workouts.map((wks, idxWk) => {
                         return (
                           <Draggable key={wks.id} {...({} as any)}>
@@ -124,36 +124,32 @@ function App() {
                                 <span title={wks.name}>{wks.name}</span>
                                 <img src={IconDot} alt="icon dot" />
                               </div>
-                              {wks.exercises.length > 0 && (
-                                <Container
-                                  groupName="exercise"
-                                  onDrop={(e) => onDropExercise(idx, idxWk, e)}
-                                  getChildPayload={(e) =>
-                                    getChildPayloadExercise(idx, idxWk, e)
-                                  }
-                                  {...({} as any)}
-                                >
-                                  {wks.exercises.map((ex) => {
-                                    return (
-                                      <Draggable key={ex.id} {...({} as any)}>
-                                        <div className="exercise">
-                                          <div className="exercise-name">
-                                            {ex.name}
-                                          </div>
-                                          <div className="exercise-info">
-                                            <span className="exercise-number-of-set">
-                                              {ex.numberOfSet}
-                                            </span>
-                                            <span className="exercise-detail">
-                                              {ex.detail}
-                                            </span>
-                                          </div>
-                                        </div>
-                                      </Draggable>
-                                    );
-                                  })}
-                                </Container>
-                              )}
+                              <Container
+                                groupName="exercise"
+                                onDrop={(e) => onDropExercise(idx, idxWk, e)}
+                                getChildPayload={(e) =>
+                                  getChildPayloadExercise(idx, idxWk, e)
+                                }
+                                {...({} as any)}
+                              >
+                                {wks.exercises.map((ex) => (
+                                  <Draggable key={ex.id} {...({} as any)}>
+                                    <div className="exercise">
+                                      <div className="exercise-name">
+                                        {ex.name}
+                                      </div>
+                                      <div className="exercise-info">
+                                        <span className="exercise-number-of-set">
+                                          {ex.numberOfSet}
+                                        </span>
+                                        <span className="exercise-detail">
+                                          {ex.detail}
+                                        </span>
+                                      </div>
+                                    </div>
+                                  </Draggable>
+                                ))}
+                              </Container>
                               <img
                                 src={IconPlus}
                                 className="add-exercise"

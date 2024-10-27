@@ -15,4 +15,5 @@ export interface Data {
   id: number;
   day: string;
   workouts: Workout[];
+  dayNumber: number;
 }

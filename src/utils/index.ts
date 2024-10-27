@@ -1,10 +1,17 @@
 import { Data } from "../types";
 
-export const getDayInWeek = (dayInWeek: number) => {
-  const dayCurrent = new Date().getDay();
-  const rangeDay = dayCurrent - dayInWeek;
-  const date = new Date().getDate() - rangeDay;
-  return date;
+const getThisWeekDates = () => {
+  const weekDates = [];
+  const today = new Date();
+  const dayOfWeek = today.getDay();
+
+  for (let i = 1; i <= 7; i++) {
+    const firstDayOfWeek = new Date(today);
+    firstDayOfWeek.setDate(today.getDate() - dayOfWeek + i);
+    weekDates.push(firstDayOfWeek.getDate());
+  }
+
+  return weekDates;
 };
 
 export const generateUniId = () =>
@@ -15,6 +22,7 @@ export const mockups: Data[] = [
     id: 1,
     day: "MON",
     workouts: [],
+    dayNumber: getThisWeekDates()[0],
   },
   {
     id: 2,
@@ -39,6 +47,7 @@ export const mockups: Data[] = [
         ],
       },
     ],
+    dayNumber: getThisWeekDates()[1],
   },
   {
     id: 2,
@@ -69,25 +78,30 @@ export const mockups: Data[] = [
         ],
       },
     ],
+    dayNumber: getThisWeekDates()[2],
   },
   {
     id: 4,
     day: "THU",
     workouts: [],
+    dayNumber: getThisWeekDates()[3],
   },
   {
     id: 5,
     day: "FRI",
     workouts: [],
+    dayNumber: getThisWeekDates()[4],
   },
   {
     id: 6,
     day: "SAT",
     workouts: [],
+    dayNumber: getThisWeekDates()[5],
   },
   {
     id: 7,
     day: "SUN",
     workouts: [],
+    dayNumber: getThisWeekDates()[6],
   },
 ];
